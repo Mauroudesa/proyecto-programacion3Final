@@ -1,67 +1,73 @@
-import React, {Component} from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet} from 'react-native';
-import { auth } from "../firebase/config";
+import React, { Component } from 'react';
+import { Text, TextInput, TouchableOpacity, View, StyleSheet} from 'react-native'; 
 
-class Login extends Component{
-    constructor(props){
-        super(props)
-        this.state={
-            email: '',
-            password: '',
+export default class Login extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: "",
+            password: "",
+            campos: ""
         }
     }
 
-    login(mail, pass){
-        
-        auth.signInWithEmailAndPassword(mail, pass)
-            .then( response => console.log(response))
-            .catch( error => console.log(error))      
-    }
+   logueoNuevo(){
+        if (this.state.email !== "" && this.state.password !== "") {
+          this.props.logueoNuevo(this.state.email, this.state.password)
+        }
+        else (this.setState({campos: "Falta completar algun campo"})); 
+      }
 
-
-    render(){
-        return(
+    render() {
+        return (
             <View style={styles.container}>
-                <Text style={styles.title}>Logueo</Text>
-                <TextInput 
+                <Text style={styles.text}>Login</Text>
+                <TextInput
                     style={styles.field}
-                    keyboardType='default'
-                    placeholder='Email'
-                    onChangeText={text => this.setState({ email: text})}
+                    keyboardType="email-address"
+                    placeholder="email"
+                    onChangeText={text => this.setState({ email: text })}
                 />
-                <TextInput 
+                <TextInput
                     style={styles.field}
-                    keyboardType='default'
-                    placeholder='password'
+                    keyboardType='number-pad'
+                    placeholder="password"
                     secureTextEntry={true}
-                    onChangeText={text => this.setState({ password: text})}
+                    onChangeText={text => this.setState({ password: text })}
                 />
-                <TouchableOpacity onPress={()=>this.login(this.state.email, this.state.password)}>
-                    <Text>Loguearme</Text>
-                </TouchableOpacity>       
+                 <Text style = {styles.textoDeError}> {this.state.campos} </Text>
+                 <Text style = {styles.textoDeError}> {this.props.falla} </Text>
+                <TouchableOpacity style = {styles.button} onPress={() => this.logueoNuevo()}>
+                    <Text style = {styles.sign}> Login </Text>
+                </TouchableOpacity>
             </View>
-
         )
     }
-
 }
 
 const styles = StyleSheet.create({
-    container:{
-        paddingHorizontal:10,
-        marginTop: 10
+    container: {
+        flex: 1,
+        backgroundColor: 'white'
     },
-    title:{
-        marginBottom:20
+    field: {
+        width: '30%',
+        backgroundColor: "black",
+        color: '#ffffff',
     },
-    field:{
-        borderColor: '#dcdcdc',
-        borderWidth: 1,
-        borderRadius: 2,
-        padding:3,
-        marginBottom:8
-
-    }
-})
-
-export default Login;
+    button: {
+        width: '30%',
+        backgroundColor: "black",
+    },
+   
+    textoDeError: {
+        fontWeight: 'bold',
+        color: '#ffffff'
+    }, 
+    sign: {
+      color: 'white',
+      fontWeight: 'bold',
+      textAlign:'left',
+      fontSize: 20,
+  }
+  })
