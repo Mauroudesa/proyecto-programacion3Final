@@ -10,6 +10,10 @@ export default class MiPerfil extends Component {
     }
   } 
 
+  componentDidMount(){
+    db.collection('Posteo').onSnapshot(docs => console.log(docs))
+  }
+
  
 
   render() {
@@ -21,12 +25,9 @@ export default class MiPerfil extends Component {
         <Text style={styles.text}>
           Última fecha de ingreso: {auth.currentUser.metadata.lastSignInTime}
         </Text>
-        <Text  style={styles.text}>Publicaciones: {this.state.posts.length}</Text> 
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => this.props.deslogueo()}
-        >
-          <Text style={styles.sign}> Cerrar sesión </Text>
+    
+        <TouchableOpacity  style={styles.button}  onPress={() => this.props.route.params.deslogueo()} >
+        <Text style={styles.sign}> Cerrar sesión </Text>
         </TouchableOpacity>
         <FlatList
           data={this.state.posts}
@@ -34,12 +35,7 @@ export default class MiPerfil extends Component {
           renderItem = { ({item}) => <View style={styles.container}>
             <Image source= {item.data.photo} style= {styles.imagen}/>
             <Text style={styles.text}> Descripcion: {item.data.description} </Text>
-            <Text  style={styles.text}> Likes: {item.data.likes.length} </Text> 
-            <TouchableOpacity
-          style={styles.button}
-          onPress={() => this.borrarPosteo(item)} >
-          <Text style= {styles.sign}> Borrar Posteo </Text>
-        </TouchableOpacity>
+          
         </View>
               }
         />
