@@ -9,11 +9,11 @@
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^6.3.1",
-    "@react-navigation/drawer": "^6.1.8",
+    "@react-navigation/drawer": "^6.4.1",
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.6.2",
     "expo": "~42.0.1",
-    "expo-camera": "~11.2.2",
+    "expo-camera": "~12.2.0",
     "expo-status-bar": "~1.0.4",
     "firebase": "8.10",
     "react": "16.13.1",
