@@ -15,7 +15,7 @@ export default class Registro extends Component {
   
 registroNuevo(){
   if (this.state.email !== "" && this.state.password !== "" && this.state.username != "") {
-    this.props.registroNuevo(this.state.email, this.state.password, this.state.username)
+    this.props.signUp(this.state.email, this.state.password, this.state.username)
   }
   else (this.setState({campos: "Falta rellenar algun campo"})); console.log(this.props);
 }
