@@ -49,6 +49,9 @@ registroNuevo(){
           <TouchableOpacity style = {styles.button} onPress={() => this.registroNuevo()}>
             <Text style={styles.sign}> Registrate pa  </Text>
           </TouchableOpacity>
+          <TouchableOpacity onPress={ ()=> this.props.navigation.navigate('Login') }>
+                        <Text>Ya tengo cuenta</Text>
+                 </TouchableOpacity>
     </View>
   );
    }
