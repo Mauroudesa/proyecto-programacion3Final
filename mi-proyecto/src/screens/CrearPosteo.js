@@ -30,7 +30,17 @@ class CrearPosteo extends Component {
             subMessages:[],
             foto:urlFoto
         })
-        .then(response => console.log(response))
+        .then(response => {
+            alert("Se creo el posteo");
+            this.setState({
+                message:"",
+                foto:"",
+                mostrarComponenteCamara: true
+            })
+            this.props.navigation.navigate('Home');
+        })
+
+        
         .catch(error => console.log(error.message))
     }
 

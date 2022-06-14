@@ -12,6 +12,23 @@ class Home extends Component {
       prueba:''
     }
   }
+  componentDidMount(){
+    db.collection('Posteo').orderBy("createdAt", "desc").onSnapshot(
+        docs => {
+            let postsAux = [] 
+            docs.forEach( doc => {
+                postsAux.push({
+                    id: doc.id,
+                    data: doc.data()
+                })
+            })
+            this.setState({
+                info: postsAux
+            })
+        }
+    )
+}
+
 
   
 
@@ -22,13 +39,8 @@ class Home extends Component {
        <FlatList
          data={this.state.info}
          keyExtractor={item => item.id.toString()}
-         renderItem={({ item }) => <Posteo info={item} navigation={this.props.navigation}/>}
+         renderItem={({ item }) => <Posteo info={item} ></Posteo>}
          />
-    
-
-
-
-
       </View>
     )
   }

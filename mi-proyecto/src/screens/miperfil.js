@@ -6,18 +6,31 @@ export default class MiPerfil extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: [],
+      info: [],
     }
   } 
 
   componentDidMount(){
-    db.collection('Posteo').onSnapshot(docs => console.log(docs))
-  }
+    db.collection('Posteo')
+    .where("owner", "==", auth.currentUser.displayName).orderBy("createdAt", "desc").onSnapshot(
+      docs => {
+          let postsAux = [] 
+          docs.forEach( doc => {
+              postsAux.push({
+                  id: doc.id,
+                  data: doc.data()
+              })
+          })
+        this.setState({
+          info: postsAux,
+  })
+      })}
+
 
  
 
   render() {
-    console.log(this.state.posts);
+    console.log(this.state.info);
     return (
       <View style={styles.container}>
         <Text style={styles.text}>Usuario: {auth.currentUser.displayName}</Text>
@@ -30,8 +43,8 @@ export default class MiPerfil extends Component {
         <Text style={styles.sign}> Cerrar sesión </Text>
         </TouchableOpacity>
         <FlatList
-          data={this.state.posts}
-          keyExtractor={(posts) => posts.id.toString()}
+          data={this.state.info}
+          keyExtractor={(info) => info.id.toString()}
           renderItem = { ({item}) => <View style={styles.container}>
             <Image source= {item.data.photo} style= {styles.imagen}/>
             <Text style={styles.text}> Descripcion: {item.data.description} </Text>
