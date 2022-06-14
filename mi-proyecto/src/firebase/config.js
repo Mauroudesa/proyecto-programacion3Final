@@ -1,13 +1,13 @@
 import app from 'firebase/app';
 import firebase from 'firebase';
 const firebaseConfig = {
-  apiKey: "AIzaSyDjDfc6eNFni6foDUuAoKtLTe3xG8J-MTM",
-  authDomain: "proyecto-integrador-c54c6.firebaseapp.com",
-  projectId: "proyecto-integrador-c54c6",
-  storageBucket: "proyecto-integrador-c54c6.appspot.com",
-  messagingSenderId: "968489522977",
-  appId: "1:968489522977:web:711ea961a19d205e221060",
-  measurementId: "G-089WMN0LMT"
+  apiKey: "AIzaSyB25YoxImclYftH8OzJDHM-Dz-QW7cMn9I",
+  authDomain: "proyectointegrador-b0c44.firebaseapp.com",
+  projectId: "proyectointegrador-b0c44",
+  storageBucket: "proyectointegrador-b0c44.appspot.com",
+  messagingSenderId: "760016961183",
+  appId: "1:760016961183:web:6e5c019c03bac0537c6caa",
+  measurementId: "G-6EH77J890C"
 };
   app.initializeApp(firebaseConfig);
 export const auth = firebase.auth();

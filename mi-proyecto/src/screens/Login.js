@@ -40,6 +40,9 @@ export default class Login extends Component {
                 <TouchableOpacity style = {styles.button} onPress={() => this.logueoNuevo()}>
                     <Text style = {styles.sign}> Login </Text>
                 </TouchableOpacity>
+                <TouchableOpacity onPress={ ()=>this.props.navigation.navigate('Register') }>
+                        <Text>No tengo cuenta</Text>
+                 </TouchableOpacity>
             </View>
         )
     }

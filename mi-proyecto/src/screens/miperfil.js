@@ -26,7 +26,7 @@ export default class MiPerfil extends Component {
           Última fecha de ingreso: {auth.currentUser.metadata.lastSignInTime}
         </Text>
     
-        <TouchableOpacity  style={styles.button}  onPress={() => this.props.route.params.deslogueo()} >
+        <TouchableOpacity  style={styles.button}  onPress={() => this.props.route.params.logout()} >
         <Text style={styles.sign}> Cerrar sesión </Text>
         </TouchableOpacity>
         <FlatList
