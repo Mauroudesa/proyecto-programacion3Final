@@ -78,3 +78,33 @@ class Comments extends Component {
         )
     }
 }
+
+const styles = StyleSheet.create({
+    container:{
+      width:'100%',
+      height:'100%',
+      justifyContent:'center',
+      alignItems:'center'
+    },
+    comment:{
+        marginTop:0
+    },
+    containerComment:{
+      flexDirection:'row',
+      width:'90%'
+    },
+    inputComment:{
+      borderWidth:1,
+      backgroundColor:'#c3c3c3',
+      width:'100%'
+    },
+    btnComment:{
+      width:'100%',
+      padding:10,
+      backgroundColor:'#d3d3d3'
+  
+    }
+  })
+
+
+export default Comments

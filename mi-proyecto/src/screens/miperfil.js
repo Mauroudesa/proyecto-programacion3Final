@@ -12,7 +12,7 @@ export default class MiPerfil extends Component {
 
   componentDidMount(){
     db.collection('Posteo')
-    .where("owner", "==", auth.currentUser.displayName).orderBy("createdAt", "desc").onSnapshot(
+    .where("owner", "==", auth.currentUser.email).orderBy("createdAt", "desc").onSnapshot(
       docs => {
           let postsAux = [] 
           docs.forEach( doc => {
@@ -38,6 +38,8 @@ export default class MiPerfil extends Component {
         <Text style={styles.text}>
           Última fecha de ingreso: {auth.currentUser.metadata.lastSignInTime}
         </Text>
+        <Text> Hola {auth.currentUser.displayName} Tenes {this.state.info.length} Cantidad de posteos hechos:</Text>
+
     
         <TouchableOpacity  style={styles.button}  onPress={() => this.props.route.params.logout()} >
         <Text style={styles.sign}> Cerrar sesión </Text>

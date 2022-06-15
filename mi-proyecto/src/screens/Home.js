@@ -55,7 +55,9 @@ const styles = StyleSheet.create({
   container:{
     flex:1,
     paddingTop:16,
-    paddingBottom:32
+    paddingBottom:32,
+    marginLeft: 80,
+    marginRight: 80
   },
   btn:{
     borderWidth:1,
