@@ -9,6 +9,7 @@ import Register from "./Registro";
 import { StatusBar } from 'expo-status-bar';
 import TabNavigation from './TabNavigation';
 import CrearPosteo from './CrearPosteo'
+import Search from './search';
 
 const Stack = createNativeStackNavigator()
 
@@ -77,6 +78,10 @@ class StackNavigation extends Component{
                             <Stack.Screen
                                 name='Message'
                                 component={CrearPosteo}
+                            />
+                            <Stack.Screen
+                                name='Search'
+                                component={Search}
                             />
                            
                         </Stack.Group>

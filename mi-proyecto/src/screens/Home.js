@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View, Text, TouchableOpacity, FlatList, ActivityIndicator, StyleSheet } from 'react-native'
 import { db } from '../firebase/config';
 import Posteo from "../components/message";
+import { TextInput } from "react-native-gesture-handler";
 
 class Home extends Component {
   constructor(props){
@@ -9,7 +10,8 @@ class Home extends Component {
     this.state={
       info:[],
       loading:true,
-      prueba:''
+      prueba:'',
+      search:''
     }
   }
   componentDidMount(){
@@ -34,14 +36,17 @@ class Home extends Component {
 
   render(){
     return (
+  
       <View style={styles.container}>
-       <Text>Estos son los Posteos recientes:</Text>
+             
+        <Text>Estos son los Posteos recientes:</Text>
        <FlatList
          data={this.state.info}
          keyExtractor={item => item.id.toString()}
-         renderItem={({ item }) => <Posteo info={item} ></Posteo>}
+         renderItem={({ item }) => <Posteo info={item}  navigation ={this.props.navigation}/>}
          />
       </View>
+   
     )
   }
 }

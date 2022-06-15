@@ -3,6 +3,8 @@ import React, {Component} from 'react'
 import CrearPosteo from './CrearPosteo'
 import Home from './home'
 import Profile from './miperfil'
+import Search from './search';
+
 const Tab = createBottomTabNavigator()
 
 export default function TabNavigation(props) {
@@ -12,6 +14,7 @@ export default function TabNavigation(props) {
     <Tab.Navigator>
         <Tab.Screen name='Home' component={Home} />
         <Tab.Screen name='CrearPosteo' component={CrearPosteo} />
+        <Tab.Screen name='Search' component={Search} />
         <Tab.Screen 
         name='Profile' 
         component={Profile} 
