@@ -8,11 +8,34 @@ class CrearPosteo extends Component {
         super(props)
         this.state = {
             message:'',
+            messageState: false,
             mostrarComponenteCamara: true,
             urlFoto:''
         }
     }
 
+    
+
+    CrearPosteo(message){
+        db.collection('Posteo').add({
+            createdAt: Date.now(),
+            message:message,
+            owner:auth.currentUser.email,
+            likes:[],
+            subMessages:[],
+            foto:this.state.urlFoto
+        })
+        .then((response) => {
+            this.setState({
+                messageState: true,
+                mostrarComponenteCamara: true
+            })
+            
+        })
+
+        
+        .catch(error => console.log(error.message))
+    }
     cuandoSubaLaImagen(url){
         console.log(url)
         this.setState({
@@ -20,30 +43,6 @@ class CrearPosteo extends Component {
             urlFoto: url
         })
     }
-
-    CrearPosteo(message, urlFoto){
-        db.collection('Posteo').add({
-            owner:auth.currentUser.email,
-            createdAt: Date.now(),
-            message:message,
-            likes:[],
-            subMessages:[],
-            foto:urlFoto
-        })
-        .then(response => {
-            alert("Se creo el posteo");
-            this.setState({
-                message:"",
-                foto:"",
-                mostrarComponenteCamara: true
-            })
-            this.props.navigation.navigate('Home');
-        })
-
-        
-        .catch(error => console.log(error.message))
-    }
-
     render(){
 
         return (
@@ -53,7 +52,7 @@ class CrearPosteo extends Component {
                 <MiCamara cuandoSubaLaImagen={(url)=> this.cuandoSubaLaImagen(url)}/>
                 :
 
-                <View>
+                <View style={styles.container}>
                     <Text>Comentame tu foto pa</Text>
                     <TextInput 
                     style={styles.textarea}
@@ -65,10 +64,8 @@ class CrearPosteo extends Component {
                     <TouchableOpacity
                         style={styles.btn}
                         onPress={() => {
-                            this.CrearPosteo(this.state.message, this.state.urlFoto)
-                            this.setState({
-                                message:'',
-                            })
+                            this.CrearPosteo(this.state.message)
+                            this.setState({ message:'',})
                             this.props.navigation.navigate('Home')
                         }}
                     >

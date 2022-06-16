@@ -2,30 +2,30 @@ import React, { Component } from "react";
 import { View, Text, TouchableOpacity, FlatList, ActivityIndicator, StyleSheet } from 'react-native'
 import { db } from '../firebase/config';
 import Posteo from "../components/message";
-import { TextInput } from "react-native-gesture-handler";
+
 
 class Home extends Component {
   constructor(props){
     super(props)
     this.state={
-      info:[],
+      Posteo:[],
       loading:true,
-      prueba:'',
-      search:''
+     
     }
   }
   componentDidMount(){
     db.collection('Posteo').orderBy("createdAt", "desc").onSnapshot(
         docs => {
-            let postsAux = [] 
+            let Posteo = [] 
             docs.forEach( doc => {
-                postsAux.push({
+              Posteo.push({
                     id: doc.id,
                     data: doc.data()
                 })
             })
             this.setState({
-                info: postsAux
+              Posteo: Posteo,
+                loading: false 
             })
         }
     )
@@ -35,16 +35,19 @@ class Home extends Component {
   
 
   render(){
+    console.log(this.state.Posteo)
     return (
-  
+     
       <View style={styles.container}>
              
-        <Text>Estos son los Posteos recientes:</Text>
+        <Text>Nuevos Posts</Text>
+        <ActivityIndicator size='small' color='blue' />
        <FlatList
-         data={this.state.info}
-         keyExtractor={item => item.id.toString()}
-         renderItem={({ item }) => <Posteo info={item}  navigation ={this.props.navigation}/>}
+         data={this.state.Posteo}
+         keyExtractor={(item) => item.id.toString()}
+         renderItem={({ item }) => <Posteo info={item}  />}
          />
+          
       </View>
    
     )
@@ -54,20 +57,10 @@ class Home extends Component {
 const styles = StyleSheet.create({
   container:{
     flex:1,
-    paddingTop:16,
-    paddingBottom:32,
-    paddingLeft: 80,
-    paddingRight: 80,
-    backgroundColor: '#3b8cde',
+   
   },
   btn:{
-    borderWidth:1,
-    borderRadius:5,
-    backgroundColor:'#192A51',
-    paddingVertical:16,
-    paddingHorizontal:8,
-    marginHorizontal:'auto',
-    marginBottom:16,
+    
   },
   textBtn:{
     color:'white'
