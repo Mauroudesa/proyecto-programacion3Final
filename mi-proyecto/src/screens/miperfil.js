@@ -1,61 +1,73 @@
 import React, { Component } from "react";
-import  { Text, View, StyleSheet,  FlatList, Image, TouchableOpacity } from "react-native";
+import  {  View, StyleSheet, TouchableOpacity, ImageBackground, FlatList, Text, Image, ActivityIndicator } from "react-native";
 import { auth, db } from "../firebase/config"; 
+import Post from '../components/Post';
 
 export default class MiPerfil extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      info: [],
+      cargando: true,
+      Posteos: [],
+      error: 'Todavia no hiciste ningun posteo'
     }
   } 
 
   componentDidMount(){
-    db.collection('Posteo')
-    .where("owner", "==", auth.currentUser.email).orderBy("createdAt", "desc").onSnapshot(
+    db.collection('Posteo').where("owner", "==", auth.currentUser.email).orderBy("createdAt", "desc").onSnapshot(
       docs => {
-          let postsAux = [] 
+          let Posteo = [] 
           docs.forEach( doc => {
-              postsAux.push({
+            Posteo.push({
                   id: doc.id,
                   data: doc.data()
               })
           })
         this.setState({
-          info: postsAux,
+          Posteo: Posteo,
+          cargando: false
   })
       })}
-
 
  
 
   render() {
-    console.log(this.state.info);
+    console.log(auth.currentUser) 
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>Usuario: {auth.currentUser.displayName}</Text>
-        <Text style={styles.text}>E-mail: {auth.currentUser.email}</Text>
-        <Text style={styles.text}>
-          Última fecha de ingreso: {auth.currentUser.metadata.lastSignInTime}
-        </Text>
-        <Text> Hola {auth.currentUser.displayName} Tenes {this.state.info.length} posteos en tu perfil:</Text>
+        <View>
+           <Text style={styles.text}>Usuario: {auth.currentUser.displayName}</Text>
+           <Text style={styles.text}>E-mail: {auth.currentUser.email}</Text>
+       </View>
+       <View>
+           <Text style={styles.text}>Última fecha de ingreso: {auth.currentUser.metadata.lastSignInTime}</Text>
+         
 
-    
         <TouchableOpacity  style={styles.button}  onPress={() => this.props.route.params.logout()} >
-        <Text style={styles.sign}> Cerrar sesión </Text>
-        </TouchableOpacity>
-        <FlatList style={styles.containerPosteos}
-          data={this.state.info}
-          keyExtractor={(info) => info.id.toString()}
-          renderItem = { ({item}) => <View style={styles.container}>
-            <Image source= {item.data.photo} style= {styles.imagen}/>
-            <Text style={styles.text}> Descripcion: {item.data.description} </Text>
-          
+
+           <Text style={styles.sign}> Cerrar sesión </Text>
+
+         </TouchableOpacity>
         </View>
-              }
-        />
+        <View>
+                    {this.state.cargando ?
+                            <ActivityIndicator size='small' color='blue' />
+                            :
+                            this.state.Posteo.length === 0 ?
+                            <Text>{this.state.error}</Text>
+                            :
+                            <FlatList
+                                data={this.state.Posteo}
+                                keyExtractor={(item) => item.id.toString()}
+                                renderItem={({ item }) => <Post info={item}></Post>}
+                            />
+                        }
+                    </View>
+        </View>
+              
+       
       
-      </View>
+      
     )
   }
 }
@@ -70,15 +82,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#3b8cde',
 },
 field: {
-    width: '30%',
+    
     backgroundColor: "black",
     color: '#ffffff',
 },
 button: {
-    width: '30%',
+   
     backgroundColor: "#07396b",
-    left: '70%',
-    textAlign: 'center'
+   
 },
 
 textoDeError: {
@@ -86,10 +97,7 @@ textoDeError: {
     color: '#ffffff'
 }, 
 sign: {
-  color: 'white',
-  fontWeight: 'bold',
-  textAlign:'center',
-  fontSize: 20,
+  
 },
 text:{
 
@@ -97,7 +105,7 @@ text:{
   
 },
 containerPosteos:{
-  backgroundColor: '#195da2',
+  
 
 }
 
