@@ -65,17 +65,17 @@ class MiCamara extends Component {
                         this.state.mostrarCamara === false
                         ?
                         <>
-                            <Text>Aqui vamos a mostrar la imagen y el aceptar y rechazar</Text>
+                            
                             <Image
                             style={styles.camara}
                             source={{uri: this.state.urlFoto}}
                             />
-                            <View style={styles.buttons}>
-                                <TouchableOpacity onPress={()=> this.aceptarFoto()}>
-                                    <Text>Aceptar</Text>
+                            <View >
+                                <TouchableOpacity style={styles.buttonsAC} onPress={()=> this.aceptarFoto()}>
+                                    <Text style={styles.text}>Aceptar</Text>
                                 </TouchableOpacity>
-                                <TouchableOpacity onPress={()=> this.descartarFoto()}>
-                                    <Text>Rechazar</Text>
+                                <TouchableOpacity style={styles.buttonsRE} onPress={()=> this.descartarFoto()}>
+                                    <Text style={styles.text} >Rechazar</Text>
                                 </TouchableOpacity>
                             </View>
                         </>
@@ -87,8 +87,8 @@ class MiCamara extends Component {
                             ref={metodos => this.metodosDeCamara = metodos}
                             />
                             <View style={styles.buttons}>
-                                <TouchableOpacity onPress={()=> this.tomarLaFoto()}>
-                                    <Text>Tomar la foto</Text>
+                                <TouchableOpacity style={styles.buttons} onPress={()=> this.tomarLaFoto()}>
+                                    <Text style={styles.text}>Tomar la foto</Text>
                                 </TouchableOpacity>
                             </View>
                         </>
@@ -107,8 +107,35 @@ const styles = StyleSheet.create({
     camara:{
         flex:9
     },
+    text:{
+        color: 'white',
+        fontSize: 40,
+        fontWeight: 'bold',
+        justifyContent: 'center',
+        marginLeft: '33%'
+    },
     buttons:{
-        flex:1
+        flex:1,
+        
+        borderRadius:5,
+        backgroundColor:'#3b8cde',
+        marginVertical:6,
+        marginHorizontal:25,
+    },
+    buttonsAC:{
+        flex:1,
+        borderRadius:5,
+        backgroundColor:'#3b8cde',
+        marginVertical:6,
+        alignItems: 'center'
+    },
+    buttonsRE:{
+        flex:1,
+        borderRadius:5,
+        backgroundColor:'#3b8cde',
+        marginVertical:6,
+
+        alignItems: 'center'
     }
 })
 

@@ -112,14 +112,14 @@ const styles = StyleSheet.create({
     paddingTop: '2%',
     },
     button:{
-        backgroundColor:'#28a745',
+        backgroundColor: '#3b8cde',
         paddingHorizontal: 10,
         paddingVertical: 6,
         textAlign: 'center',
         borderRadius:4, 
         borderWidth:1,
         borderStyle: 'solid',
-        borderColor: '#28a745'
+        backgroundColor: '#3b8cde',
     },
 })
 

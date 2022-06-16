@@ -70,7 +70,8 @@ class Posteo extends Component {
         return (
             <>
                 <View style={styles.container}>
-                    <View>
+                    
+                    <View style={styles.subcontainer}>
                         <Text style={styles.messageOwner}>{documento.owner}</Text>
                         <Text style={styles.messageText}>{documento.message}</Text>
                     </View>
@@ -91,7 +92,7 @@ class Posteo extends Component {
                         }
                     </View>
                 </View>
-                <TouchableOpacity 
+                <TouchableOpacity style={styles.btn} 
                 onPress={() => this.props.navigation.navigate('Comments', {id: this.props.info.id})}
                 >
                     <Text>Comentar el post</Text>
@@ -113,20 +114,37 @@ const styles= StyleSheet.create({
         marginHorizontal:10,
         marginTop:8
     },
+
+    subcontainer:{
+        
+    },
     messageOwner:{
-        fontWeight:600
+        fontWeight:600,
+        
     },
     messageText:{
         paddingLeft:8,
-        paddingVertical:8
+        paddingVertical:8,
+   
+
     },
     containerLike:{
         flexDirection:'row',
+        
     },
     likesCounter:{
         marginRight:8,
 
-    }
+    },
+    btn:{
+        borderWidth:1,
+        borderRadius:5,
+        backgroundColor:'#406e9b',
+        paddingVertical:16,
+        paddingHorizontal:8,
+        marginHorizontal:'auto',
+        marginBottom:16,
+      }
 })
 
 export default Posteo

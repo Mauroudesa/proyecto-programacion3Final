@@ -38,13 +38,13 @@ export default class MiPerfil extends Component {
         <Text style={styles.text}>
           Última fecha de ingreso: {auth.currentUser.metadata.lastSignInTime}
         </Text>
-        <Text> Hola {auth.currentUser.displayName} Tenes {this.state.info.length} Cantidad de posteos hechos:</Text>
+        <Text> Hola {auth.currentUser.displayName} Tenes {this.state.info.length} posteos en tu perfil:</Text>
 
     
         <TouchableOpacity  style={styles.button}  onPress={() => this.props.route.params.logout()} >
         <Text style={styles.sign}> Cerrar sesión </Text>
         </TouchableOpacity>
-        <FlatList
+        <FlatList style={styles.containerPosteos}
           data={this.state.info}
           keyExtractor={(info) => info.id.toString()}
           renderItem = { ({item}) => <View style={styles.container}>
@@ -62,8 +62,12 @@ export default class MiPerfil extends Component {
 
 const styles = StyleSheet.create({ 
   container: {
-    flex: 1,
-    backgroundColor: 'white'
+    flex:1,
+    paddingTop:16,
+    paddingBottom:32,
+    paddingLeft: 80,
+    paddingRight: 80,
+    backgroundColor: '#3b8cde',
 },
 field: {
     width: '30%',
@@ -72,7 +76,9 @@ field: {
 },
 button: {
     width: '30%',
-    backgroundColor: "black",
+    backgroundColor: "#07396b",
+    left: '70%',
+    textAlign: 'center'
 },
 
 textoDeError: {
@@ -82,7 +88,17 @@ textoDeError: {
 sign: {
   color: 'white',
   fontWeight: 'bold',
-  textAlign:'left',
+  textAlign:'center',
   fontSize: 20,
+},
+text:{
+
+    color:'white'
+  
+},
+containerPosteos:{
+  backgroundColor: '#195da2',
+
 }
+
 })

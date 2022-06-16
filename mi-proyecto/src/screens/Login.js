@@ -51,26 +51,33 @@ export default class Login extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'white'
+        backgroundColor: '#3b8cde',
+        paddingHorizontal:10,
+        paddingTop: 80,
+        marginLeft: 80,
+        marginRight: 80,
+        alignItems: 'center',
+      
+        
     },
     field: {
-        width: '30%',
-        backgroundColor: "black",
-        color: '#ffffff',
+        width: '70%',
+        backgroundColor: "#07396b",
+        color: 'white',
     },
     button: {
         width: '30%',
-        backgroundColor: "black",
+        backgroundColor: "#07396b",
     },
    
     textoDeError: {
         fontWeight: 'bold',
-        color: '#ffffff'
+        color: 'white'
     }, 
     sign: {
       color: 'white',
       fontWeight: 'bold',
-      textAlign:'left',
+      textAlign:'center',
       fontSize: 20,
   }
   })
