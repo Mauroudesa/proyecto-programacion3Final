@@ -85,7 +85,7 @@ class StackNavigation extends Component{
                             name='Comments'
                             component={Comments}
                             />
-                            :
+                            
 
                             <Stack.Screen
                                 name='Search'
