@@ -2,7 +2,6 @@ import { View, Text, FlatList, TouchableOpacity, TextInput, StyleSheet } from 'r
 import React, {Component} from 'react'
 import { db, auth } from '../firebase/config'
 import firebase from 'firebase'
-
 class Comments extends Component {
     constructor(props){
         super(props)
@@ -11,26 +10,25 @@ class Comments extends Component {
             nuevoComentario:''
         } 
     }
-
     componentDidMount(){
         const idDoc = this.props.route.params.id
             db
-            .collection('messages')
+            .collection('Posteo')
             .doc(idDoc)
             .onSnapshot(doc => {
+                
                 this.setState({
+                    
                     comentarios:doc.data().subMessages
                 })
             })
     }
-
     onSubmit(elComentario){
         const comment ={
             owner: auth.currentUser.email,
             createdAt: Date.now(),
             description: elComentario
         }
-
         if(elComentario !== ''){
             db
             .collection('Posteo')
@@ -41,7 +39,6 @@ class Comments extends Component {
             .then(response => this.setState({nuevoComentario:''}))
             .catch(error => console.log(error))
         }
-
     }
     
     render(){
@@ -78,7 +75,6 @@ class Comments extends Component {
         )
     }
 }
-
 const styles = StyleSheet.create({
     container:{
       width:'100%',
@@ -105,6 +101,4 @@ const styles = StyleSheet.create({
   
     }
   })
-
-
 export default Comments

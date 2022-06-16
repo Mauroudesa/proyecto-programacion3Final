@@ -45,7 +45,7 @@ class Home extends Component {
        <FlatList
          data={this.state.Posteo}
          keyExtractor={(item) => item.id.toString()}
-         renderItem={({ item }) => <Posteo info={item}  />}
+         renderItem={({ item }) => <Posteo info={item} navigation = {this.props.navigation} />}
          />
           
       </View>

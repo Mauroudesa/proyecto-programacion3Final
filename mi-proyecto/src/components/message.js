@@ -1,9 +1,8 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import React, {Component} from 'react'
 import { FontAwesome } from '@expo/vector-icons'
 import firebase from 'firebase'
 import {auth, db} from '../firebase/config'
-
 
 class Posteo extends Component {
     
@@ -16,7 +15,6 @@ class Posteo extends Component {
             arrSubMessages:[]
         }
     }
-
     componentDidMount(){
         const documento = this.props.info.data
         const estaMiLike = documento.likes.includes(auth.currentUser.email)
@@ -26,15 +24,12 @@ class Posteo extends Component {
                 cantLikes: documento.likes.length
             })
         }
-
         if(estaMiLike){
             this.setState({
                 miLike:true
             })
         }
-
     }
-
     like(){
         const documento = this.props.info
         db.collection('Posteo').doc(documento.id).update({
@@ -48,7 +43,6 @@ class Posteo extends Component {
         })
         .catch(error=> console.log(error))
     }
-
     unlike(){
         const documento = this.props.info
         db.collection('Posteo').doc(documento.id).update({
@@ -63,8 +57,6 @@ class Posteo extends Component {
         .catch(error=> console.log(error))
     }
     
-
-
     render(){
         const documento = this.props.info.data
         return (
@@ -72,6 +64,11 @@ class Posteo extends Component {
                 <View style={styles.container}>
                     
                     <View style={styles.subcontainer}>
+                        <Image style = {styles.img} source={ {
+                            uri: documento.foto
+                        }
+                        
+                        }></Image>
                         <Text style={styles.messageOwner}>{documento.owner}</Text>
                         <Text style={styles.messageText}>{documento.message}</Text>
                     </View>
@@ -88,25 +85,22 @@ class Posteo extends Component {
                             <TouchableOpacity onPress={()=> this.like()}>
                                 <FontAwesome name='heart-o' size={24} color='black' /> 
                             </TouchableOpacity>
-
                         }
                     </View>
                 </View>
                 <TouchableOpacity style={styles.btn} 
-                onPress={() => this.props.navigation.navigate('Comments', {id: this.props.info.id})}
-                >
+                onPress={() => this.props.navigation.navigate('Comments', {id: this.props.info.id})}>
                     <Text>Comentar el post</Text>
                 </TouchableOpacity>
             </>
         )
     }
 }
-
 const styles= StyleSheet.create({
     container:{
         flex:1,
         flexDirection:'row',
-        justifyContent:'space-between',
+        justifyContent:'center',
         paddingVertical:8,
         paddingHorizontal:6,
         borderRadius:5,
@@ -114,7 +108,6 @@ const styles= StyleSheet.create({
         marginHorizontal:10,
         marginTop:8
     },
-
     subcontainer:{
         
     },
@@ -126,7 +119,6 @@ const styles= StyleSheet.create({
         paddingLeft:8,
         paddingVertical:8,
    
-
     },
     containerLike:{
         flexDirection:'row',
@@ -134,7 +126,6 @@ const styles= StyleSheet.create({
     },
     likesCounter:{
         marginRight:8,
-
     },
     btn:{
         borderWidth:1,
@@ -144,7 +135,31 @@ const styles= StyleSheet.create({
         paddingHorizontal:8,
         marginHorizontal:'auto',
         marginBottom:16,
+      },
+      img:{
+        flex: 1,
+        height:60,
+        width: 40 
       }
 })
-
 export default Posteo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
