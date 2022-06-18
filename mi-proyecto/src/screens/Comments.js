@@ -49,7 +49,7 @@ class Comments extends Component {
             keyExtractor={( item ) => item.createdAt.toString()}
             renderItem={ ( {item} ) => <View style={styles.comment}>
                 <Text>{item.owner}</Text>
-                <Text>{item.createdAt}</Text>
+                
                 <Text>{item.description}</Text>
             </View>
         }

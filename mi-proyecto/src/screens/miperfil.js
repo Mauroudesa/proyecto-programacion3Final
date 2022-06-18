@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import  {  View, StyleSheet, TouchableOpacity, ImageBackground, FlatList, Text, Image, ActivityIndicator } from "react-native";
 import { auth, db } from "../firebase/config"; 
-import Post from '../components/Post';
+
+import Posteo from "../components/message";
 
 export default class MiPerfil extends Component {
   constructor(props) {
@@ -57,9 +58,11 @@ export default class MiPerfil extends Component {
                             <Text>{this.state.error}</Text>
                             :
                             <FlatList
+                                numColumns={2}
+                                horizontal={false}
                                 data={this.state.Posteo}
                                 keyExtractor={(item) => item.id.toString()}
-                                renderItem={({ item }) => <Post info={item}></Post>}
+                                renderItem={({ item }) => <Posteo info={item} navigation = {this.props.navigation} />}
                             />
                         }
                     </View>

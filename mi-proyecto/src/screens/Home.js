@@ -41,13 +41,19 @@ class Home extends Component {
       <View style={styles.container}>
              
         <Text>Nuevos Posts</Text>
+        {
+        this.state.loading ?
+      
         <ActivityIndicator size='small' color='blue' />
+        :
+      
        <FlatList
          data={this.state.Posteo}
          keyExtractor={(item) => item.id.toString()}
          renderItem={({ item }) => <Posteo info={item} navigation = {this.props.navigation} />}
          />
           
+        }
       </View>
    
     )
