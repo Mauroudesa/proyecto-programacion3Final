@@ -7,7 +7,8 @@ class Comments extends Component {
         super(props)
         this.state={
             comentarios:[],
-            nuevoComentario:''
+            nuevoComentario:'',
+            loading: true
         } 
     }
     componentDidMount(){
@@ -19,7 +20,9 @@ class Comments extends Component {
                 
                 this.setState({
                     
-                    comentarios:doc.data().subMessages
+                    comentarios:doc.data().subMessages,
+                    loading: false
+                    
                 })
             })
     }
@@ -44,6 +47,8 @@ class Comments extends Component {
     render(){
         return (
           <View style={styles.container}>
+      
+         
             <FlatList
             data={this.state.comentarios}
             keyExtractor={( item ) => item.createdAt.toString()}
@@ -52,7 +57,9 @@ class Comments extends Component {
                 
                 <Text>{item.description}</Text>
             </View>
+        
         }
+
             />
             <View>
                 <TextInput
@@ -70,7 +77,9 @@ class Comments extends Component {
                 >
                     <Text>Enviar</Text>
                 </TouchableOpacity>
+            
             </View>
+                
           </View>
         )
     }

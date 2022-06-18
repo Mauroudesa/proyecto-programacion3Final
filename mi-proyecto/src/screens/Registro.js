@@ -9,21 +9,24 @@ export default class Registro extends Component {
        email: "",
        password: "",
        username: "",
-       campos: ""
+       campos: "",
+       message:''
      }
   }
   
-registroNuevo(){
-  if (this.state.email !== "" && this.state.password !== "" && this.state.username != "") {
-    this.props.signUp(this.state.email, this.state.password, this.state.username)
+  componentDidMount(){
+    // console.log(this.props.route.params.errorMessage)
+    auth.onAuthStateChanged((user)=>{
+      // console.log(user)
+    })
   }
-  else (this.setState({campos: "Falta rellenar algun campo"})); console.log(this.props);
-}
 
   render(){  
+    const {signUp} = this.props
   return (
+    
     <View style = {styles.container}>
-        <Text style={styles.text}> Registrooo </Text>
+        <Text style={styles.text}> Registro </Text>
         <TextInput
           style={styles.field}
           placeholder="user"
@@ -33,25 +36,31 @@ registroNuevo(){
         
         <TextInput
           style={styles.field}
-          placeholder="mail pa"
+          placeholder="Email"
           keyboardType="email-address"
           onChangeText={text => this.setState({email: text})}
           />
           <TextInput
           style={styles.field}
-          placeholder="clave"
+          placeholder="contraseña"
           keyboardType="default"
           secureTextEntry={true}
           onChangeText={text => this.setState({password: text})}
           /> 
-            <Text style = {styles.textoDeError}> {this.state.campos} </Text> 
+
              <Text style = {styles.textoDeError}> {this.props.error} </Text>
-          <TouchableOpacity style = {styles.button} onPress={() => this.registroNuevo()}>
-            <Text style={styles.sign}> Registrate pa  </Text>
+
+          <TouchableOpacity style = {styles.button} onPress={
+          () => {
+            signUp(this.state.email, this.state.password)
+          }}>
+            <Text style={styles.sign}> Registrarse </Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={ ()=> this.props.navigation.navigate('Login') }>
                         <Text>Ya tengo cuenta</Text>
                  </TouchableOpacity>
+    
+
     </View>
   );
    }

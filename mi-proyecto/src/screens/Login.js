@@ -7,18 +7,15 @@ export default class Login extends Component {
         this.state = {
             email: "",
             password: "",
-            campos: ""
+            campos: "",
+            error: null
         }
     }
 
-   logueoNuevo(){
-        if (this.state.email !== "" && this.state.password !== "") {
-          this.props.logueoNuevo(this.state.email, this.state.password)
-        }
-        else (this.setState({campos: "Falta completar algun campo"})); 
-      }
+
 
     render() {
+        const {signIn} = this.props.route.params
         return (
             <View style={styles.container}>
                 <Text style={styles.text}>Login</Text>
@@ -35,14 +32,15 @@ export default class Login extends Component {
                     secureTextEntry={true}
                     onChangeText={text => this.setState({ password: text })}
                 />
-                 <Text style = {styles.textoDeError}> {this.state.campos} </Text>
-                 <Text style = {styles.textoDeError}> {this.props.falla} </Text>
-                <TouchableOpacity style = {styles.button} onPress={() => this.logueoNuevo()}>
+                 
+                <TouchableOpacity style = {styles.button}onPress={() => signIn(this.state.email, this.state.password)}>
                     <Text style = {styles.sign}> Login </Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={ ()=>this.props.navigation.navigate('Register') }>
                         <Text>No tengo cuenta</Text>
                  </TouchableOpacity>
+                 <Text style={styles.textoDeError}>{this.props.error}</Text>
+
             </View>
         )
     }

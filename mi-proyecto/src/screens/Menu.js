@@ -19,7 +19,7 @@ class StackNavigation extends Component{
         super(props)
         this.state={
             loggedIn: false,
-            errorMessage:'Error1'
+            errorMessage:''
         }
     }
     

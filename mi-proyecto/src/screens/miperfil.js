@@ -9,8 +9,7 @@ export default class MiPerfil extends Component {
     super(props);
     this.state = {
       cargando: true,
-      Posteos: [],
-      error: 'Todavia no hiciste ningun posteo'
+      Posteo: []
     }
   } 
 
@@ -39,6 +38,7 @@ export default class MiPerfil extends Component {
         <View>
            <Text style={styles.text}>Usuario: {auth.currentUser.displayName}</Text>
            <Text style={styles.text}>E-mail: {auth.currentUser.email}</Text>
+           <Text style={styles.text}>Posteos hechos: { this.state.Posteo.length}</Text>
        </View>
        <View>
            <Text style={styles.text}>Última fecha de ingreso: {auth.currentUser.metadata.lastSignInTime}</Text>
@@ -51,12 +51,14 @@ export default class MiPerfil extends Component {
          </TouchableOpacity>
         </View>
         <View>
-                    {this.state.cargando ?
+                    {this.state.Posteo.length === 0 ?
+                            <Text style={styles.text}>Todavia no hiciste ningun posteo</Text>
+                            :
+                    this.state.cargando ?
                             <ActivityIndicator size='small' color='blue' />
                             :
-                            this.state.Posteo.length === 0 ?
-                            <Text>{this.state.error}</Text>
-                            :
+                            
+                            
                             <FlatList
                                 numColumns={2}
                                 horizontal={false}
@@ -95,10 +97,7 @@ button: {
    
 },
 
-textoDeError: {
-    fontWeight: 'bold',
-    color: '#ffffff'
-}, 
+
 sign: {
   
 },
@@ -106,10 +105,6 @@ text:{
 
     color:'white'
   
-},
-containerPosteos:{
-  
-
 }
 
 })
