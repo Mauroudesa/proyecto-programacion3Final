@@ -92,6 +92,7 @@ class Posteo extends Component {
                 onPress={() => this.props.navigation.navigate('Comments', {id: this.props.info.id})}>
                     <Text>Comentar el post</Text>
                 </TouchableOpacity>
+                
             </>
         )
     }

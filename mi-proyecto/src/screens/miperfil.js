@@ -65,6 +65,7 @@ export default class MiPerfil extends Component {
                                 data={this.state.Posteo}
                                 keyExtractor={(item) => item.id.toString()}
                                 renderItem={({ item }) => <Posteo info={item} navigation = {this.props.navigation} />}
+                                
                             />
                         }
                     </View>
