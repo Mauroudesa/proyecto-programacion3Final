@@ -99,15 +99,12 @@ class Posteo extends Component {
 }
 const styles= StyleSheet.create({
     container:{
-        flex:1,
-        flexDirection:'row',
-        justifyContent:'center',
-        paddingVertical:8,
-        paddingHorizontal:6,
-        borderRadius:5,
-        backgroundColor:'#F5E6E8',
-        marginHorizontal:10,
-        marginTop:8
+        flex: 1,
+           alignItems: 'center',
+           backgroundColor: '#40CFFF',
+           width: "50%",
+           alignContent: "center",
+           marginLeft: "25%"
     },
     subcontainer:{
         
@@ -119,6 +116,8 @@ const styles= StyleSheet.create({
     messageText:{
         paddingLeft:8,
         paddingVertical:8,
+        padding: "5px",
+        color: "white",
    
     },
     containerLike:{
@@ -129,18 +128,17 @@ const styles= StyleSheet.create({
         marginRight:8,
     },
     btn:{
-        borderWidth:1,
-        borderRadius:5,
-        backgroundColor:'#406e9b',
-        paddingVertical:16,
-        paddingHorizontal:8,
-        marginHorizontal:'auto',
-        marginBottom:16,
+        backgroundColor: "orange",
+        color: "black",
+        padding: 7,
+        marginTop: 5,
+        borderRadius: 15,
+        marginLeft:"25%",
+        marginRight:"25%"
       },
       img:{
-        flex: 1,
-        height:60,
-        width: 40 
+        height: 300,
+        width: '100%' 
       }
 })
 export default Posteo

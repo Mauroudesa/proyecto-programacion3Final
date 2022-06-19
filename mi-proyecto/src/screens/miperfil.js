@@ -29,7 +29,14 @@ export default class MiPerfil extends Component {
   })
       })}
 
- 
+      borrarPosteo(Posteo){
+        db.collection('Posteo').doc(Posteo.id).delete()
+        .then(() => {
+                console.log("Se borro el posteo!");
+            }).catch((error) => {
+                console.error("No se pudo borrar ", error);
+            });
+        }
 
   render() {
     console.log(auth.currentUser) 
@@ -49,8 +56,39 @@ export default class MiPerfil extends Component {
            <Text style={styles.sign}> Cerrar sesión </Text>
 
          </TouchableOpacity>
+
+         
         </View>
-        <View>
+
+        <FlatList
+          data={this.state.Posteo}
+          keyExtractor={(Posteo) => Posteo.id.toString()}
+          renderItem = { ({item}) => <View style={styles.container}>
+            <Image source= {item.data.foto} style= {styles.img}/>
+            <Text style={styles.text}> Descripcion: {item.data.description} </Text>
+            <Text  style={styles.text}> Likes: {item.data.likes.length} </Text> 
+            <TouchableOpacity
+           style={styles.button2}
+           onPress={() => this.borrarPosteo(item)} >
+            <Text style= {styles.sign}> Borrar Posteo </Text>
+             </TouchableOpacity>
+            </View>
+          }
+        
+          />
+      
+          </View>
+
+       
+
+        )
+      }
+    }
+
+
+        /* <View>
+
+      
                     {this.state.Posteo.length === 0 ?
                             <Text style={styles.text}>Todavia no hiciste ningun posteo</Text>
                             :
@@ -66,17 +104,17 @@ export default class MiPerfil extends Component {
                                 keyExtractor={(item) => item.id.toString()}
                                 renderItem={({ item }) => <Posteo info={item} navigation = {this.props.navigation} />}
                                 
+                                
                             />
                         }
-                    </View>
-        </View>
+                        
+                    </View> */
+        
               
        
       
       
-    )
-  }
-}
+
 
 const styles = StyleSheet.create({ 
   container: {
@@ -94,7 +132,8 @@ field: {
 },
 button: {
    
-    backgroundColor: "#07396b",
+    backgroundColor: "red",
+    width: "10%"
    
 },
 
@@ -104,8 +143,18 @@ sign: {
 },
 text:{
 
-    color:'white'
+    color:'black'
   
+},
+button2:{
+backgroundColor: "orange",
+width: '10%',
+
+},
+img:{
+  height: 400,
+  width: '50%',
 }
+
 
 })
