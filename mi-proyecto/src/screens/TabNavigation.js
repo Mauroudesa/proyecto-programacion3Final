@@ -14,32 +14,23 @@ export default function TabNavigation(props) {
   
     return (
     <Tab.Navigator>
+
         <Tab.Screen name='Home' component={Home}
-        options={ 
-          { tabBarIcon: () => <FontAwesome name="home" size={24} color="black" /> }
-         } 
-        />
+          options={{ tabBarIcon: () => <FontAwesome name="home" size={24} color="black" />}}/>
+
         <Tab.Screen name='CrearPosteo' component={CrearPosteo} 
-        options={ 
-          { tabBarIcon: () => <FontAwesome name="plus" size={24} color="black" /> }
-         } />
+          options={{ tabBarIcon: () => <FontAwesome name="plus" size={24} color="black" />}}/>
+
         <Tab.Screen name='Search' component={Search}
-         options={ 
-          { tabBarIcon: () => <FontAwesome name="search" size={24} color="black" /> }
-         } />
+          options={{ tabBarIcon: () => <FontAwesome name="search" size={24} color="black" /> }}/>
         
         <Tab.Screen 
-        name='Profile' 
-        component={Profile} 
-        
-        initialParams={{
-            logout: () => logout()
-        }}
-        options={ 
-          { tabBarIcon: () => <MaterialIcons name="account-circle" size={24} color="black" /> }
-        }
-        
+          name='Profile' 
+          component={Profile} 
+          initialParams={{logout: () => logout()}}
+          options={{tabBarIcon: () => <MaterialIcons name="account-circle" size={24} color="black" />}}
         />
+
     </Tab.Navigator>
   )
 }

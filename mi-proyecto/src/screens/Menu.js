@@ -48,11 +48,7 @@ class StackNavigation extends Component{
 
     signIn(email, password){
         auth.signInWithEmailAndPassword(email, password)
-        .then(response => {
-            this.setState({
-                loggedIn:true
-            })
-        })
+        .then(response => { this.setState({loggedIn:true})})
         .catch(error =>this.setState({errorMessage: error.message}))
     }
 
@@ -61,37 +57,18 @@ class StackNavigation extends Component{
             <NavigationContainer>
                 <Stack.Navigator>
                     {
-                        this.state.loggedIn ?
+                        this.state.loggedIn ? // Es una manera de hacer un condicional con true o false
                         <Stack.Group>
                             <Stack.Screen 
-                            name='TabNavigation' 
-                            component={TabNavigation}
-                            options={{
-                                headerShown:false
-                            }}
-                            initialParams={
-                                {
-                                    logout: () => this.logout(),
-                                    errorMessage: this.message
-                                }
-                            }
+                                name='TabNavigation' 
+                                component={TabNavigation}
+                                options={{headerShown:false}}
+                                initialParams={{logout: () => this.logout(),errorMessage: this.message}}
                             />
                             <Stack.Screen
-                                name='Message'
-                                component={CrearPosteo}
-                            />
-
-                            <Stack.Screen
-                            name='Comments'
-                            component={Comments}
-                            />
-                            
-
-                            <Stack.Screen
-                                name='Search'
-                                component={Search}
-                            />
-                           
+                                name='Comments'
+                                component={Comments}
+                            />               
                         </Stack.Group>
                         
                         :
@@ -113,14 +90,10 @@ class StackNavigation extends Component{
                                 }}
                             />
                             <Stack.Screen 
-                            name='Login' 
-                            component={Login}
-                            initialParams={{
-                                signIn: (email, password)=> this.signIn(email, password)
-                            }}
-                            options={{
-                                headerShown:false
-                            }}
+                                name='Login' 
+                                component={Login}
+                                initialParams={{signIn: (email, password)=> this.signIn(email, password)}}
+                                options={{headerShown:false}}
                             />
                         </Stack.Group>
                     }
