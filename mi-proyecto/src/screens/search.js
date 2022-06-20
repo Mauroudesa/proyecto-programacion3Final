@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {View, Button, Text, TextInput, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
-import {auth, db} from '../firebase/config';
+import {db} from '../firebase/config';
 import Posteo from '../components/message';
 
 
@@ -66,7 +66,7 @@ class Search extends Component{
                   null
                 )
             }
-<FlatList
+<FlatList style={styles.posts}
          data={this.state.posteos}
          keyExtractor={item => item.id.toString()}
          renderItem={({ item }) => <Posteo info={item}  />}
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
         marginTop: 30,
         marginBottom: 30,
         flex: 1,
-       
+       alignItems: 'center',
         width: "200px%",
         paddingHorizontal:10,
         marginTop: 20,
@@ -101,6 +101,7 @@ const styles = StyleSheet.create({
         borderStyle: 'solid',
         borderRadius: 6,
         marginVertical:10,
+        width: '50%'
     },
     info:{
     fontWeight: 'bold',
@@ -110,6 +111,7 @@ const styles = StyleSheet.create({
     alignItems:"center",
     paddingBottom: '2%',
     paddingTop: '2%',
+    width: '100%'
     },
     button:{
         backgroundColor: '#3b8cde',
@@ -120,7 +122,12 @@ const styles = StyleSheet.create({
         borderWidth:1,
         borderStyle: 'solid',
         backgroundColor: '#3b8cde',
+        width: '50%'
     },
+    posts:{
+        width: '100%',
+        height: 100
+    }
 })
 
 

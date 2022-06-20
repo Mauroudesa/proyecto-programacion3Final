@@ -67,6 +67,8 @@ export default class MiPerfil extends Component {
             <Image source= {item.data.foto} style= {styles.img}/>
             <Text style={styles.text}> Descripcion: {item.data.description} </Text>
             <Text  style={styles.text}> Likes: {item.data.likes.length} </Text> 
+
+            
             <TouchableOpacity
            style={styles.button2}
            onPress={() => this.borrarPosteo(item)} >
