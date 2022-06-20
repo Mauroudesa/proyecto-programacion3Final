@@ -38,14 +38,14 @@ class StackNavigation extends Component{
         .catch(error => console.log(error))
     }
 
-    
+    //registro
     signUp(email, password){
         auth.createUserWithEmailAndPassword(email, password)
         .then(response => this.setState({logedIn: true}))
         .catch(error => this.setState({errorMessage:error.message}))
     }
 
-
+//login
     signIn(email, password){
         auth.signInWithEmailAndPassword(email, password)
         .then(response => { this.setState({loggedIn:true})})
