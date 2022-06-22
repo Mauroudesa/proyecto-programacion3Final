@@ -104,15 +104,19 @@ const styles= StyleSheet.create({
            backgroundColor: '#40CFFF',
            width: "50%",
            alignContent: "center",
-           marginLeft: "25%"
+           height: "25%",
+           alignSelf: "center",
+           boxShadow: "rgb(204 204 204 ) 0px 0px 9px 7px #ccc",
     },
     subcontainer:{
         marginBottom: 20,
         borderRadius: 6,
         borderColor: "#ccc",
         borderWidth: 1,
-        padding: 10,
-        width: '70%'
+        paddingVertical:10,
+        width: '90%',
+        
+        
     },
     messageOwner:{
         fontWeight:600,
@@ -148,7 +152,7 @@ const styles= StyleSheet.create({
        
       },
       img:{
-        height: 500,
+        height: 370,
         width: "100%" 
       },
     textbtn:{

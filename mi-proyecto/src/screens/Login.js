@@ -18,6 +18,7 @@ export default class Login extends Component {
         const {signIn} = this.props.route.params
         return (
             <View style={styles.container}>
+                <View style={styles.Subcontainer}>
                 <Text style={styles.text}>Login</Text>
                 <TextInput
                     style={styles.field}
@@ -40,7 +41,7 @@ export default class Login extends Component {
                         <Text>No tengo cuenta</Text>
                  </TouchableOpacity>
                  <Text style={styles.textoDeError}>{this.props.error}</Text>
-
+                 </View>
             </View>
         )
     }
@@ -51,13 +52,22 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#3b8cde',
         alignItems: 'center',
+       
       
         
     },
     field: {
+        
         width: '70%',
         backgroundColor: "#07396b",
         color: 'white',
+        alignItems: 'center',
+        
+    },
+    Subcontainer: {
+        marginTop: 60,
+        width: '100%',
+        alignItems: 'center'
     },
     button: {
         width: '30%',

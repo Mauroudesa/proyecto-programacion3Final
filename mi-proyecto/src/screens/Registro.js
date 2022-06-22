@@ -26,6 +26,7 @@ export default class Registro extends Component {
   return (
     
     <View style = {styles.container}>
+      <View style = {styles.Subcontainer}>
         <Text style={styles.text}> Registro </Text>
         <TextInput
           style={styles.field}
@@ -60,7 +61,7 @@ export default class Registro extends Component {
                         <Text>Ya tengo cuenta</Text>
                  </TouchableOpacity>
     
-
+                 </View>
     </View>
   );
    }
@@ -79,6 +80,11 @@ export default class Registro extends Component {
         backgroundColor: "#07396b",
         color: 'white',
     },
+    Subcontainer: {
+      marginTop: 60,
+      width: '100%',
+      alignItems: 'center'
+  },
     button: {
         width: '30%',
         backgroundColor: "#07396b",

@@ -109,10 +109,11 @@ const styles = StyleSheet.create({
     },
     text:{
         color: 'white',
-        fontSize: 40,
+        fontSize: 35,
         fontWeight: 'bold',
         justifyContent: 'center',
-        marginLeft: '33%'
+       
+        alignItems: 'center',
     },
     buttons:{
         flex:1,
@@ -120,20 +121,26 @@ const styles = StyleSheet.create({
         backgroundColor:'#3b8cde',
         marginVertical:1,
         marginHorizontal:1,
+        
+        alignItems: 'center',
+        
     },
     buttonsAC:{
         flex:1,
         borderRadius:5,
         backgroundColor:'#3b8cde',
         marginVertical:6,
-        alignItems: 'center'
+        alignItems: 'center',
+        textAlign: 'center',
+        alignSelf: "center"
     },
     buttonsRE:{
         flex:1,
         borderRadius:5,
         backgroundColor:'#3b8cde',
         marginVertical:6,
-
+        alignSelf: "center",
+        textAlign: 'center',
         alignItems: 'center'
     }
 })

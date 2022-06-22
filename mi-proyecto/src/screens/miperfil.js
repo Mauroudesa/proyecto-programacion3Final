@@ -61,21 +61,22 @@ export default class MiPerfil extends Component {
         </View>
 
         <FlatList
+        
           numColumns={2}
           horizontal={false}
           data={this.state.Posteo}
           keyExtractor={(Posteo) => Posteo.id.toString()}
           renderItem = { ({item}) => <View style={styles.container}>
-            <Image source= {item.data.foto} style= {styles.img}/>
-            <Text style={styles.text}> Descripcion: {item.data.description} </Text>
-            <Text  style={styles.text}> Likes: {item.data.likes.length} </Text> 
-
-            
-            <TouchableOpacity
+             <TouchableOpacity
            style={styles.button2}
            onPress={() => this.borrarPosteo(item)} >
             <Text style= {styles.sign}> Borrar Posteo </Text>
              </TouchableOpacity>
+            
+            <Posteo info={item} navigation = {this.props.navigation} />
+
+            
+            
             </View>
           }
         
@@ -123,8 +124,8 @@ export default class MiPerfil extends Component {
 const styles = StyleSheet.create({ 
   container: {
     flex:1,
-   backgroundColor : "#40CFFF"
-    
+   backgroundColor : "#40CFFF",
+   marginTop: 18,
 
     
 },
@@ -152,7 +153,10 @@ text:{
 },
 button2:{
 backgroundColor: "orange",
-width: '80%',
+width: '50%',
+alignSelf: 'center',
+textAlign: 'center',
+alignItems: 'center'
 
 },
 img:{
