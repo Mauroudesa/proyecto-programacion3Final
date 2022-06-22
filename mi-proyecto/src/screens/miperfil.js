@@ -135,9 +135,12 @@ field: {
     color: '#ffffff',
 },
 button: {
-   
+  borderRadius: 15,
     backgroundColor: "red",
-    width: "80%",
+width: '30%',
+alignSelf: 'left',
+textAlign: 'center',
+alignItems: 'left'
     
    
 },
@@ -152,6 +155,7 @@ text:{
   
 },
 button2:{
+  borderRadius: 15,
 backgroundColor: "orange",
 width: '50%',
 alignSelf: 'center',
