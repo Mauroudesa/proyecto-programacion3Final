@@ -116,11 +116,10 @@ const styles = StyleSheet.create({
     },
     buttons:{
         flex:1,
-        
-        borderRadius:5,
+        borderRadius:1,
         backgroundColor:'#3b8cde',
-        marginVertical:6,
-        marginHorizontal:25,
+        marginVertical:1,
+        marginHorizontal:1,
     },
     buttonsAC:{
         flex:1,

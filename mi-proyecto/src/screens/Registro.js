@@ -70,10 +70,6 @@ export default class Registro extends Component {
     container: {
         flex: 1,
         backgroundColor: '#3b8cde',
-        paddingHorizontal:10,
-        paddingTop: 80,
-        marginLeft: 80,
-        marginRight: 80,
         alignItems: 'center',
       
         

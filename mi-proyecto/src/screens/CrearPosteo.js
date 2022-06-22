@@ -53,7 +53,7 @@ class CrearPosteo extends Component {
                 :
 
                 <View style={styles.container}>
-                    <Text>Comentame tu foto pa</Text>
+                    <Text>Comentame tu foto</Text>
                     <TextInput 
                     style={styles.textarea}
                     onChangeText= {(text)=> this.setState({

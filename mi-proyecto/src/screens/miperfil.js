@@ -61,6 +61,8 @@ export default class MiPerfil extends Component {
         </View>
 
         <FlatList
+          numColumns={2}
+          horizontal={false}
           data={this.state.Posteo}
           keyExtractor={(Posteo) => Posteo.id.toString()}
           renderItem = { ({item}) => <View style={styles.container}>
@@ -121,11 +123,10 @@ export default class MiPerfil extends Component {
 const styles = StyleSheet.create({ 
   container: {
     flex:1,
-    paddingTop:16,
-    paddingBottom:32,
-    paddingLeft: 80,
-    paddingRight: 80,
-    backgroundColor: '#3b8cde',
+   backgroundColor : "#40CFFF"
+    
+
+    
 },
 field: {
     
@@ -135,7 +136,8 @@ field: {
 button: {
    
     backgroundColor: "red",
-    width: "10%"
+    width: "80%",
+    
    
 },
 
@@ -150,12 +152,12 @@ text:{
 },
 button2:{
 backgroundColor: "orange",
-width: '10%',
+width: '80%',
 
 },
 img:{
-  height: 400,
-  width: '50%',
+  height: 500,
+  width: "100%" 
 }
 
 
