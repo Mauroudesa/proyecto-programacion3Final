@@ -15,7 +15,7 @@ export default class Login extends Component {
 
 
     render() {
-        const {signIn} = this.props.route.params
+        const {signIn} = this.props
         return (
             <View style={styles.container}>
                 <View style={styles.Subcontainer}>
@@ -40,7 +40,7 @@ export default class Login extends Component {
                 <TouchableOpacity onPress={ ()=>this.props.navigation.navigate('Register') }>
                         <Text>No tengo cuenta</Text>
                  </TouchableOpacity>
-                 <Text style={styles.textoDeError}>{this.props.error}</Text>
+                 <Text style = {styles.textoDeError}> {this.props.errorMessage} </Text>
                  </View>
             </View>
         )

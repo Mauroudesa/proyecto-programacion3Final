@@ -89,11 +89,19 @@ class StackNavigation extends Component{
                                     headerShown:false
                                 }}
                             />
-                            <Stack.Screen 
+                             <Stack.Screen 
                                 name='Login' 
-                                component={Login}
-                                initialParams={{signIn: (email, password)=> this.signIn(email, password)}}
-                                options={{headerShown:false}}
+                                children={
+                                    (props)=> <Login
+                                    signIn={(email, password)=> this.signIn(email, password)}
+                                    errorMessage={this.state.errorMessage}
+                                    {...props}
+                                    />
+                    
+                                }
+                                options={{
+                                    headerShown:false
+                                }}
                             />
                         </Stack.Group>
                     }
