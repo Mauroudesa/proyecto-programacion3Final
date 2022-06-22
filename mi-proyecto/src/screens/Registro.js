@@ -49,7 +49,7 @@ export default class Registro extends Component {
           onChangeText={text => this.setState({password: text})}
           /> 
 
-             <Text style = {styles.textoDeError}> {this.props.error} </Text>
+             <Text style = {styles.textoDeError}> {this.props.errorMessage} </Text>
 
           <TouchableOpacity style = {styles.button} onPress={
           () => {
